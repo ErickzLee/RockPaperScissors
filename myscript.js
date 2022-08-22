@@ -20,6 +20,28 @@ function playRound(playerSelection, computerSelection) {
             return 'You Tie!';
         }
     }
+    if (person == 'paper') {
+        if (comp == 'rock') {
+            return 'You Win! ' + playerSelection + ' beats ' + computerSelection;
+        }
+        else if (comp == 'scissors') {
+            return 'You Lose! ' + computerSelection + ' beats ' + playerSelection;
+        }
+        else {
+            return 'You Tie!';
+        }
+    }
+    if (person == 'scissors') {
+        if (comp == 'paper') {
+            return 'You Win! ' + playerSelection + ' beats ' + computerSelection;
+        }
+        else if (comp == 'rock') {
+            return 'You Lose! ' + computerSelection + ' beats ' + playerSelection;
+        }
+        else {
+            return 'You Tie!';
+        }
+    }
 }
 
 console.log(playRound(playerSelection, computerSelection));
