@@ -1,6 +1,6 @@
 const comp_choice = ['Rock', 'Paper', 'Scissors'];
-const playerSelection = 'rock';
 const computerSelection = getComputerChoice();
+let win = 0;
 function getComputerChoice() {
     let random_number = Math.floor(Math.random() * 3);
     return comp_choice[random_number];
@@ -44,4 +44,15 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-console.log(playRound(playerSelection, computerSelection));
+function game() {
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = prompt('Choose Rock, Paper, or Scissors');
+        let result = playRound(playerSelection, computerSelection);
+        console.log(result);
+        if (result.includes('Win')) {
+            win++;
+        }
+    }
+    console.log(win);
+}
+game();
