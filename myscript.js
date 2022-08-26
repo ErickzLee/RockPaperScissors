@@ -1,14 +1,40 @@
 const comp_choice = ['Rock', 'Paper', 'Scissors'];
 const computerSelection = getComputerChoice();
 let win = 0;
+let playerscore = 0;
+let compscore = 0;
+
+const rock = document.querySelector('#rock');
+console.log(rock);
+rock.addEventListener('click', () => {
+    game('rock');
+});
+
+const paper = document.querySelector('#paper');
+console.log(paper);
+paper.addEventListener('click', () => {
+    game('paper');
+});
+
+const scissors = document.querySelector('#scissors');
+console.log(scissors);
+scissors.addEventListener('click', () => {
+    game('scissors');
+});
+
+const player = document.querySelector('#player-score');
+player.textContent = `Player Score: ${playerscore}`;
+const computer = document.querySelector('#comp-score');
+computer.textContent = `Computer Score: ${compscore}`;
+
 function getComputerChoice() {
     let random_number = Math.floor(Math.random() * 3);
     return comp_choice[random_number];
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
     let person = playerSelection.toLowerCase();
-    let comp = computerSelection.toLowerCase();
+    let comp = getComputerChoice().toLowerCase();
     if (person == 'rock') {
         if (comp == 'scissors') {
             return 'You Win! ' + playerSelection + ' beats ' + computerSelection;
@@ -44,15 +70,27 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt('Choose Rock, Paper, or Scissors');
-        let result = playRound(playerSelection, computerSelection);
-        console.log(result);
-        if (result.includes('Win')) {
-            win++;
-        }
+function game(playerSelection) {
+    let result = playRound(playerSelection);
+    console.log(result);
+    if (result.includes('Win')) {
+         playerscore++;
     }
-    console.log(win);
+    else {
+        compscore++;
+    }
+    updatescore();
+    if(playerscore == 5) {
+        alert('Player has won!');
+    }
+    else if(compscore == 5) {
+        alert('Computer has won!');
+    }
+    
 }
-game();
+
+function updatescore() {
+    player.textContent = `Player Score: ${playerscore}`;
+    computer.textContent = `Computer Score: ${compscore}`;
+}
+/*game();*/
