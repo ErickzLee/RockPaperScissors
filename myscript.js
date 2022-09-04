@@ -4,23 +4,24 @@ let win = 0;
 let playerscore = 0;
 let compscore = 0;
 
-const rock = document.querySelector('#rock');
-console.log(rock);
-rock.addEventListener('click', () => {
-    game('rock');
+
+let choice = document.querySelectorAll('.button');
+const winner = document.querySelector('.winner');
+const reset = document.querySelector('.popup');
+
+reset.addEventListener('click', () => {
+    resetScreen();
+    restartGame();
+    document.querySelector('.popup').style.display = 'none';
 });
 
-const paper = document.querySelector('#paper');
-console.log(paper);
-paper.addEventListener('click', () => {
-    game('paper');
-});
-
-const scissors = document.querySelector('#scissors');
-console.log(scissors);
-scissors.addEventListener('click', () => {
-    game('scissors');
-});
+choice.forEach((button) => {
+    button.addEventListener('click', () => {
+        const image = button.querySelector('img');
+        playerSelection = image.alt;
+        game(playerSelection);
+    })
+})
 
 const player = document.querySelector('#player-score');
 player.textContent = `Player Score: ${playerscore}`;
@@ -81,10 +82,12 @@ function game(playerSelection) {
     }
     updatescore();
     if(playerscore == 5) {
-        alert('Player has won!');
+        playerWon();
+        document.querySelector('.popup').style.display = 'flex';
     }
     else if(compscore == 5) {
-        alert('Computer has won!');
+        computerWon();
+        document.querySelector('.popup').style.display = 'flex';
     }
     
 }
@@ -93,4 +96,21 @@ function updatescore() {
     player.textContent = `Player Score: ${playerscore}`;
     computer.textContent = `Computer Score: ${compscore}`;
 }
-/*game();*/
+
+function playerWon() {
+    winner.textContent = 'PLAYER HAS WON';
+}
+
+function restartGame() {
+    playerscore = 0;
+    compscore = 0;
+}
+
+function computerWon() {
+    winner.textContent = 'COMPUTER HAS WON';
+    console.log('hi');
+}
+
+function resetScreen() {
+    winner.textContent = '';
+}
