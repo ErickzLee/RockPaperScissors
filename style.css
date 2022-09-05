@@ -1,8 +1,31 @@
+body {
+    background-color: rgb(241, 229, 205);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.options {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
 .button img {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
 }
 
 .popup {
+    display: none;
+}
+
+.tie {
     display: none;
 }

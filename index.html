@@ -8,19 +8,26 @@
     <title>RockPaperScissors</title>
 </head>
 <body>
-    <div id="rock" class="button">
-        <img src="images/rock.jpg" alt="rock">
+    <div class="page">
+        <h1>Rock Paper Scissors</h1>
+        <div class="rule">Pick one, see who wins...</div>
+        <div class="options">
+            <div id="rock" class="button">
+                <img src="images/rock-1.png" alt="rock">
+            </div>
+            <div id="paper" class="button">
+                <img src="images/paper-1.png" alt="paper">
+            </div>
+            <div id="scissors" class="button">
+                <img src="images/scissors.jpg" alt="scissors">
+            </div>
+        </div>
+        <div id="player-score"></div>
+        <div id="comp-score"></div>
+        <div class="tie">You Tied!</div>
+        <div class="winner"></div>
+        <button class="popup">Reset</button>
     </div>
-    <div id="paper" class="button">
-        <img src="images/paper.jpg" alt="paper">
-    </div>
-    <div id="scissors" class="button">
-        <img src="images/scissors.jpg" alt="scissors">
-    </div>
-    <div id="player-score"></div>
-    <div id="comp-score"></div>
-    <div class="winner"></div>
-    <button class="popup">Reset</button>
     <script src="myscript.js"></script>
 </body>
 </html>

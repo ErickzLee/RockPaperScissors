@@ -72,13 +72,17 @@ function playRound(playerSelection) {
 }
 
 function game(playerSelection) {
+    document.querySelector('.tie').style.display = 'none';
     let result = playRound(playerSelection);
     console.log(result);
     if (result.includes('Win')) {
          playerscore++;
     }
-    else {
+    else if(result.includes('Lose')){
         compscore++;
+    }
+    else {
+        document.querySelector('.tie').style.display = 'flex';
     }
     updatescore();
     if(playerscore == 5) {
@@ -104,11 +108,11 @@ function playerWon() {
 function restartGame() {
     playerscore = 0;
     compscore = 0;
+    updatescore();
 }
 
 function computerWon() {
     winner.textContent = 'COMPUTER HAS WON';
-    console.log('hi');
 }
 
 function resetScreen() {
